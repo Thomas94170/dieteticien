@@ -17,7 +17,7 @@ export default function About() {
                     Je saurai vous écouter et vous comprendre afin de vous aider au mieux.</p>
             </div>
             <div className="space-y-5 sm:space-y-4 md:max-w-xl lg:max-w-3xl xl:max-w-none">
-
+                <br/>
                 <p className="text-xl ">Le diététicien-nutritionniste, souvent mal désigné par le terme seul de
                     diététicien, est un professionnel paramédical dans le domaine de la nutrition. Sa mission est à la
                     fois préventive et curative. Il prévient les risques cardio-vasculaires et évite le surpoids.</p>

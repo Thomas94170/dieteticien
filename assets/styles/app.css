@@ -1,0 +1,44 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.title{
+    font-family: "Baloo Bhaina 2", serif;
+}
+h4,
+a{
+    font-family: "Baloo Bhaina 2", serif;
+}
+
+.presentation{
+    font-family: "Noto Sans Medium",serif;
+}
+h2
+{
+    color: #DC9A7D;
+}
+h3
+{
+    color: #DC9A7D;
+}
+p
+{
+    color: #DC9A7D;
+}
+span
+{
+    color: #DC9A7D;
+}
+
+
+.navbar{
+    background-color: #609A7D;
+}
+
+footer{
+    background-color: #609A7D;
+}
+
+.butsubmit{
+    background-color: #609A7D;
+}
