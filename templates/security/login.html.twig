@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Log in!{% endblock %}
+
+{% block content %}
+<div class="grid justify-items-stretch ...">
+    <!-- ... -->
+    <div class="justify-self-center ...">
+    <div class="max-w-sm rounded overflow-hidden shadow-lg">
+        <img class="w-full" src="{{ asset('./img/salad.jpg') }}" alt="Salade">
+        <div class="px-6 py-4">
+            <form action="{{ path('login') }}" method="post">
+                {% if error %}
+                    <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                {% endif %}
+
+                {% if app.user %}
+                    <div class="mb-3">
+                        You are logged in as {{ app.user.userIdentifier }}, <a href="{{ path('logout') }}">Logout</a>
+                    </div>
+                {% endif %}
+
+                <h1 class="h3 mb-3 font-weight-normal"></h1>
+                <div class="bg-white px-4 py-5 sm:p-6">
+                    <div class="grid grid-cols-6 gap-6">
+                        <div class="col-span-6 sm:col-span-3">
+
+                <label for="inputEmail" class="block text-sm font-medium text-gray-700">Email</label>
+                <input class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" type="email" value="{{ last_username }}" name="_username" id="inputEmail" class="form-control" autocomplete="email" required autofocus>
+                <label for="inputPassword" class="block text-sm font-medium text-gray-700">Password</label>
+                <input class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" type="password" name="_password" id="inputPassword" class="form-control" autocomplete="current-password" required>
+
+                <input type="hidden" name="_csrf_token"
+                       value="{{ csrf_token('authenticate') }}"
+                >
+                <button class="btn btn-lg btn-primary" type="submit">
+                    Se connecter
+                </button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    </div>
+</div>
+
+<br/>
+
+
+
+
+{% endblock %}

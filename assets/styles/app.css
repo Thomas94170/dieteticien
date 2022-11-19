@@ -42,3 +42,7 @@ footer{
 .butsubmit{
     background-color: #609A7D;
 }
+
+.raisin{
+    background-image: url("/public/img/raisin.jpg");
+}

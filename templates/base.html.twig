@@ -13,6 +13,7 @@
         {% block stylesheets %}
             {{ encore_entry_link_tags('app') }}
             <script src="https://cdn.tailwindcss.com"></script>
+
         {% endblock %}
 
         {% block javascripts %}
@@ -27,7 +28,7 @@
                 </div>
                 <div class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
                     <div class="flex flex-shrink-0 items-center">
-                        <H4 class="text-white">Sandrine Coupart, diététicienne nutritionniste à votre service!</H4>
+
                     </div>
                     <div class="hidden sm:ml-6 sm:block">
                         <div class="flex space-x-4">
@@ -39,23 +40,41 @@
 
                             <a href="{{path('contact')}}" class="text-white hover:text-black px-3 py-2 rounded-md text-sm font-medium">Contactez-moi!</a>
 
-                            <a href="#" class="text-white hover:text-black px-3 py-2 rounded-md text-sm font-medium">Recettes gratuites</a>
+                            <a href="{{ path('recette') }}" class="text-white hover:text-black px-3 py-2 rounded-md text-sm font-medium">Recettes gratuites</a>
+                            {% if app.user %}
+                                <a href="{{ path('mon_espace') }}" class="text-white hover:text-black px-3 py-2 rounded-md text-sm font-medium">Mon espace</a>
+                            {% endif %}
 
+                            {% if app.user %}
+
+                            <a href="{{ path('admin') }}" class="text-white hover:text-black px-3 py-2 rounded-md text-sm font-medium">Mon espace Admin</a>
+                            {% endif %}
 
 
                         </div>
                     </div>
                 </div>
                 <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-                    <button type="button" class="rounded-full  p-1 text-black hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
+
+                        {% if app.user %}
+                    <a href="{{ path('logout') }}"  type="button" class="rounded-full  p-1 text-red-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
                         <span class="sr-only">View notifications</span>
                         <!-- Heroicon name: outline/power -->
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M5.636 5.636a9 9 0 1012.728 0M12 3v9" />
                         </svg>
 
-                    </button>
+                    </a>
+                        {% else %}
+                    <a href="{{ path('login') }}"  type="button" class="rounded-full  p-1 text-black hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
+                        <span class="sr-only">View notifications</span>
+                        <!-- Heroicon name: outline/power -->
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M5.636 5.636a9 9 0 1012.728 0M12 3v9" />
+                        </svg>
 
+                    </a>
+                    {% endif %}
                     <!-- Profile dropdown -->
                     <div class="relative ml-3">
 
@@ -70,9 +89,9 @@
         <!-- Mobile menu, show/hide based on menu state. -->
 
     </nav>
-
-
-
+    <br/>
+    <H4 class="text-black italic">Sandrine Coupart, diététicienne nutritionniste à votre service!</H4>
+    <br/>
 
 
 

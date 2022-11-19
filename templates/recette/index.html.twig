@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello RecetteController!{% endblock %}
+
+{% block content %}
+<div class="grid grid-rows-4 grid-flow-col gap-4">
+{% for recette in recettes %}
+   <div class="max-w-sm rounded overflow-hidden shadow-lg">
+
+      <div class="px-6 py-4">
+         <h3>{{ recette.titre }}</h3>
+         <br/>
+         <img src="{{ recette.image }}" alt="food"/>
+         <p>{{ recette.description }}</p>
+         <br/>
+         <p>allergène : {{ recette.allergenes }}</p>
+
+      </div>
+
+   </div>
+
+  {# {{dump(recette)}}#}
+
+   {% endfor %}
+</div>
+   <br/><br/>
+{% endblock %}
