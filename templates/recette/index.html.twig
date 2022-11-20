@@ -14,7 +14,14 @@
          <p>{{ recette.description }}</p>
          <br/>
          <p>allergène : {{ recette.allergenes }}</p>
-
+         <br>
+         {% if recette.vegetarien ==1 %}
+         <p class="text-green-500">Végétarien</p>
+            {% elseif recette.vegetarien ==0 %}
+               <p class="text-red-600">Non Végétarien</p>
+               {% endif %}
+         </p>
+         <a href="{{ path('consulter_recette', {'id' : recette.id})}}">Voir la recette </a>
       </div>
 
    </div>

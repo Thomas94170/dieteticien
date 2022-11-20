@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ConsulterRecetteController!{% endblock %}
+
+{% block content %}
+<br>
+    <div class="flex justify-center">
+    <div class="max-w-sm rounded overflow-hidden shadow-lg">
+        <br>
+        <p class="font-bold text-xl mb-2">{{ recette.titre }}</p>
+        <img src="{{ recette.image }}" alt="food"/>
+        <div class="px-6 py-4">
+            <p class="text-gray-700 text-base">{{ recette.description }}</p>
+            <br>
+            <p class="text-gray-700 text-base">Ingrédients: <br>{{ recette.ingredients }}</p>
+            <br>
+            <p class="text-gray-700 text-base">
+                {{ recette.etape }}
+            </p>
+        </div>
+        <div class="px-6 pt-4 pb-2">
+            <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">Préparation: {{ recette.tempsPreparation }}</span>
+            <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">Cuisson: {{ recette.tempsCuisson }}</span>
+            <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">Repos: {{ recette.tempsRepos }}</span>
+        </div>
+    </div>
+
+</div>
+    <br>
+    <br>
+
+{% endblock %}
