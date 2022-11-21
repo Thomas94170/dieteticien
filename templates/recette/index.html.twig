@@ -3,6 +3,14 @@
 {% block title %}Hello RecetteController!{% endblock %}
 
 {% block content %}
+   <br>
+  {% if app.user %}
+<div class="grid justify-items-stretch">
+   <!-- ... -->
+   <p class="justify-self-center">{{ user.firstname }}, rendez-vous dans votre espace pour consulter vos recettes!</p>
+</div>
+   {% endif %}
+   <br>
 <div class="grid grid-rows-4 grid-flow-col gap-4">
 {% for recette in recettes %}
    <div class="max-w-sm rounded overflow-hidden shadow-lg">
@@ -31,4 +39,7 @@
    {% endfor %}
 </div>
    <br/><br/>
+
+
+
 {% endblock %}

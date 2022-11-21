@@ -14,15 +14,25 @@ class RecetteController extends AbstractController
     #[Route('/recette', name: 'recette')]
     public function index(ManagerRegistry $doctrine, Request $request): Response
     {
+        $user = $this->getUser();
         $recettes = $doctrine->getRepository(Recette::class)->findAll();
         dump($recettes);
 
 
 
         return $this->render('recette/index.html.twig',[
-            'recettes'=>$recettes
+            'recettes'=>$recettes,
+                'user'=>$user
             ]
 
         );
     }
+
+
+
+
+
 }
+
+
+

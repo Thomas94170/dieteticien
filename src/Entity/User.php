@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -26,6 +28,23 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     #[ORM\Column]
     private ?string $password = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $firstname = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $lastname = null;
+
+    #[ORM\ManyToMany(targetEntity: Recette::class, inversedBy: 'users')]
+    private Collection $recette;
+
+    #[ORM\Column(length: 255)]
+    private ?string $regime = null;
+
+    public function __construct()
+    {
+        $this->recette = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -95,5 +114,65 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     {
         // If you store any temporary, sensitive data on the user, clear it here
         // $this->plainPassword = null;
+    }
+
+    public function getFirstname(): ?string
+    {
+        return $this->firstname;
+    }
+
+    public function setFirstname(string $firstname): self
+    {
+        $this->firstname = $firstname;
+
+        return $this;
+    }
+
+    public function getLastname(): ?string
+    {
+        return $this->lastname;
+    }
+
+    public function setLastname(string $lastname): self
+    {
+        $this->lastname = $lastname;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, recette>
+     */
+    public function getRecette(): Collection
+    {
+        return $this->recette;
+    }
+
+    public function addRecette(recette $recette): self
+    {
+        if (!$this->recette->contains($recette)) {
+            $this->recette->add($recette);
+        }
+
+        return $this;
+    }
+
+    public function removeRecette(recette $recette): self
+    {
+        $this->recette->removeElement($recette);
+
+        return $this;
+    }
+
+    public function getRegime(): ?string
+    {
+        return $this->regime;
+    }
+
+    public function setRegime(string $regime): self
+    {
+        $this->regime = $regime;
+
+        return $this;
     }
 }
