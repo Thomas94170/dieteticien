@@ -26,6 +26,7 @@
         <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
             <div class="relative flex h-16 items-center justify-between">
                 <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
+
                 </div>
                 <div class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
                     <div class="flex flex-shrink-0 items-center">
@@ -43,7 +44,9 @@
 
                             <a href="{{ path('recette') }}" class="text-white hover:text-black px-3 py-2 rounded-md text-sm font-medium">Recettes gratuites</a>
                             {% if app.user %}
+                            {% if user.roles is same as ['ROLE_USER'] %}
                                 <a href="{{ path('mon_espace') }}" class="text-white hover:text-black px-3 py-2 rounded-md text-sm font-medium">Mon espace</a>
+                            {% endif %}
                             {% endif %}
 
 
@@ -90,7 +93,28 @@
         </div>
 
         <!-- Mobile menu, show/hide based on menu state. -->
+        <!-- Mobile menu, show/hide based on menu state. -->
+        <div class="sm:hidden" id="mobile-menu">
+            <div class="space-y-1 px-2 pt-2 pb-3">
+                <a href="{{path('home')}}" class="text-white hover:text-black px-3 py-2 rounded-md text-sm font-medium">A propos de moi</a>
 
+                <a href="{{path('contact')}}" class="text-white hover:text-black px-3 py-2 rounded-md text-sm font-medium">Contactez-moi!</a>
+
+                <a href="{{ path('recette') }}" class="text-white hover:text-black px-3 py-2 rounded-md text-sm font-medium">Recettes gratuites</a>
+                {% if app.user %}
+                    {% if user.roles is same as ['ROLE_USER'] %}
+                        <a href="{{ path('mon_espace') }}" class="text-white hover:text-black px-3 py-2 rounded-md text-sm font-medium">Mon espace</a>
+                    {% endif %}
+                {% endif %}
+
+
+                {% if app.user %}
+                    {% if user.roles is same as ['ROLE_ADMIN'] %}
+                        <a href="{{ path('admin') }}" class="text-white hover:text-black px-3 py-2 rounded-md text-sm font-medium">Mon espace Admin</a>
+                    {% endif %}
+                {% endif %}
+            </div>
+        </div>
     </nav>
     <br/>
     <H4 class="text-black italic">Sandrine Coupart, diététicienne nutritionniste à votre service!</H4>
@@ -126,7 +150,7 @@
 
             </nav>
 
-            <p class="mt-8 text-center text-base text-gray-400">&copy; 2020 Your Company, Inc. All rights reserved.</p>
+            <p class="mt-8 text-center text-base text-gray-400">&copy; 2020 <span><a href="https://thirion-thomas-devweb.vercel.app/">Thomasdevweb94</a> </span>, Inc. All rights reserved.</p>
         </div>
     </footer>
 

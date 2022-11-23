@@ -4,8 +4,65 @@
 
 {% block content %}
     <div class="border-b border-gray-200 bg-white px-4 py-5 sm:px-6">
-        <h3 class="text-lg font-medium leading-6 text-gray-900">{{ user.lastname }} {{ user.firstname }}</h3>
-        <p class="mt-1 text-sm text-gray-500">type de régime: {{ user.regime }}</p>
+        <div class="flex justify-evenly ...">
+        <h3 class="text-lg font-medium leading-6 text-gray-900">{{ user.lastname }} {{ user.firstname }}<span class="mt-1 text-sm text-gray-500 ml-3">type de régime: {{ user.regime }}</span></h3>
+
+            <h3 class="text-sm font-medium leading-6 text-gray-900">Contact: <span class="text-lg font-medium leading-6 text-gray-900">{{ user.email }}</span></h3>
+
+        </div>
+        <div class="flex justify-center ...">
+
+
+        </div>
     </div>
+    <br>
+
+
+
+
+    <div class="bg-white">
+       <div class="mx-auto max-w-2xl py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8">
+        <h2 class="text-2xl font-bold tracking-tight text-gray-900 mb-2">Mes plats:</h2>
+
+           <div class="grid grid-rows-4 grid-flow-col gap-4">
+    {% for recette in user.recette %}
+
+                <div class="group relative">
+                    <div class="min-h-80 aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-md bg-gray-200 group-hover:opacity-75 lg:aspect-none lg:h-80">
+                        <img src="{{ recette.image }}" alt="{{ recette.titre }}" width="100%" height="100%">
+                    </div>
+                    <div class="mt-4 flex justify-between">
+                        <div>
+                            <h3 class="text-sm text-gray-700">
+                                   {{ recette.titre }}
+                            </h3>
+                            <p class="mt-1 text-sm text-gray-500">{{ recette.ingredients }}</p>
+                            <p class="mt-1 text-sm text-gray-500">allergène(s): {{ recette.allergenes }}</p>
+                        </div>
+                        <p class="text-sm font-medium text-gray-900 ml-2">{{ recette.etape }}</p>
+
+                    </div>
+                    <div class="flex justify-evenly ...">
+                        <p class="mt-1 text-sm text-gray-500">temps de préparation: {{ recette.tempsPreparation }}</p>
+                        <p class="mt-1 text-sm text-gray-500">temps de cuisson: {{ recette.tempsCuisson }}</p>
+                        <p class="mt-1 text-sm text-gray-500">temps de repos : {{ recette.tempsRepos }}</p>
+
+                    </div>
+                </div>
+
+                {% endfor %}
+
+            </div>
+       </div>
+    </div>
+
+
+
+
+
+
+
+
+
 
 {% endblock %}

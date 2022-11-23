@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+html{
+    font-family: "Baloo Bhaina 2", serif;
+}
+
 .title{
     font-family: "Baloo Bhaina 2", serif;
 }
@@ -23,6 +27,7 @@ h3
 }
 p
 {
+    font-family: "Baloo Bhaina 2", serif;
     color: #DC9A7D;
 }
 span

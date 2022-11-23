@@ -13,25 +13,30 @@
    <br>
 <div class="grid grid-rows-4 grid-flow-col gap-4">
 {% for recette in recettes %}
-   <div class="max-w-sm rounded overflow-hidden shadow-lg">
 
-      <div class="px-6 py-4">
-         <h3>{{ recette.titre }}</h3>
-         <br/>
-         <img src="{{ recette.image }}" alt="food"/>
-         <p>{{ recette.description }}</p>
-         <br/>
-         <p>allergène : {{ recette.allergenes }}</p>
-         <br>
-         {% if recette.vegetarien ==1 %}
-         <p class="text-green-500">Végétarien</p>
-            {% elseif recette.vegetarien ==0 %}
-               <p class="text-red-600">Non Végétarien</p>
-               {% endif %}
-         </p>
-         <a href="{{ path('consulter_recette', {'id' : recette.id})}}">Voir la recette </a>
+
+   <div class="group relative">
+      <div class="min-h-80 aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-md bg-gray-200 group-hover:opacity-75 lg:aspect-none lg:h-80">
+         <img src="{{ recette.image }}" alt="{{ recette.titre }}" width="auto" height="100%">
       </div>
+      <div class="mt-4 flex justify-between">
+         <div>
+            <h3 class="text-sm text-gray-700">
+               {{ recette.titre }}
+            </h3>
+            <p class="mt-1 text-sm text-gray-500">{{ recette.ingredients }}</p>
+            <p class="mt-1 text-sm text-gray-500">allergène(s): {{ recette.allergenes }}</p>
+         </div>
+         <p class="text-sm font-medium text-gray-900 ml-2">{{ recette.etape }}</p>
 
+      </div>
+      <div class="flex justify-evenly ...">
+         <p class="mt-1 text-sm text-gray-500">temps de préparation: {{ recette.tempsPreparation }}</p>
+         <p class="mt-1 text-sm text-gray-500">temps de cuisson: {{ recette.tempsCuisson }}</p>
+         <p class="mt-1 text-sm text-gray-500">temps de repos : {{ recette.tempsRepos }}</p>
+
+      </div>
+      <a href="{{ path('consulter_recette', {'id' : recette.id})}}" type="button" class="inline-flex items-center rounded-full border border-transparent bg-gray-400 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 mt-3">Consulter la recette</a>
    </div>
 
   {# {{dump(recette)}}#}

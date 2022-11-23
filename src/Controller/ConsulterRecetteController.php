@@ -13,10 +13,12 @@ class ConsulterRecetteController extends AbstractController
     #[Route('/consulter/recette/{id}', name: 'consulter_recette')]
     public function index(ManagerRegistry $managerRegistry, $id): Response
     {
+        $user = $this->getUser();
         $recette= $managerRegistry->getRepository(Recette::class)->findOneBy(array('id' => $id));
 
         return $this->render('consulter_recette/index.html.twig',[
-            'recette'=>$recette
+            'recette'=>$recette,
+            'user'=>$user
         ]);
     }
 }
